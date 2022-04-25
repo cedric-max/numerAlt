@@ -1,8 +1,8 @@
 package com.numerlAlt.NumerAlt.controller;
 
 import com.numerlAlt.NumerAlt.dto.UserDto;
-import com.numerlAlt.NumerAlt.entity.Applicant;
-import com.numerlAlt.NumerAlt.service.ApplicantServiceInterface;
+import com.numerlAlt.NumerAlt.entity.Recruiter;
+import com.numerlAlt.NumerAlt.service.RecruiterServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,12 +15,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value="/applicant")
+@RequestMapping(value="/recruiter")
 @CrossOrigin(origins = "http://localhost:8080")
-public class ApplicantController {
+public class RecruiterController {
 
     @Autowired
-    private ApplicantServiceInterface applicantService;
+    private RecruiterServiceInterface recruiterService;
 
     /**
      * Cette méthode permet de gérer le retour d'erreur en cas de non validation du formulaire d'inscription
@@ -55,9 +55,9 @@ public class ApplicantController {
             value = "/registration",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public UserDto registerCandidatAccount(@RequestBody @Valid UserDto userDto) {
+    public UserDto registerRecruiterAccount(@RequestBody @Valid UserDto userDto) {
         try {
-            Applicant registered = applicantService.registerNewApplicantAccount(userDto);
+            Recruiter registered = recruiterService.registerNewRecruiterAccount(userDto);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

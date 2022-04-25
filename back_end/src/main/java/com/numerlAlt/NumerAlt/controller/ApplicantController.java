@@ -55,7 +55,7 @@ public class ApplicantController {
             value = "/registration",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public UserDto registerCandidatAccount(@RequestBody @Valid UserDto userDto) {
+    public UserDto registerApplicantAccount(@RequestBody @Valid UserDto userDto) {
         try {
             Applicant registered = applicantService.registerNewApplicantAccount(userDto);
         } catch (Exception e) {

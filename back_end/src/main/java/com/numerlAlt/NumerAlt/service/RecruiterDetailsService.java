@@ -1,7 +1,7 @@
 package com.numerlAlt.NumerAlt.service;
 
-import com.numerlAlt.NumerAlt.entity.Applicant;
-import com.numerlAlt.NumerAlt.repository.ApplicantRepositoryInterface;
+import com.numerlAlt.NumerAlt.entity.Recruiter;
+import com.numerlAlt.NumerAlt.repository.RecruiterRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,24 +16,24 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ApplicantDetailsService implements UserDetailsService {
+public class RecruiterDetailsService implements UserDetailsService {
     @Autowired
-    private ApplicantRepositoryInterface applicantRepository;
+    private RecruiterRepositoryInterface recruiterRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Applicant applicant = applicantRepository.findByEmail(email);
-        if (applicant == null) {
+        Recruiter recruiter = recruiterRepository.findByEmail(email);
+        if (recruiter == null) {
             throw new UsernameNotFoundException("No user found with username: " + email);
         }
         boolean enabled = true;
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;
-//        List<String> roles = Arrays.asList(applicant.getRole());
+//        List<String> roles = Arrays.asList(recruiter.getRole());
 //
 //        return new org.springframework.security.core.userdetails.User(
-//                applicant.getEmail(), applicant.getPassword().toLowerCase(), enabled, accountNonExpired,
+//                recruiter.getEmail(), recruiter.getPassword().toLowerCase(), enabled, accountNonExpired,
 //                credentialsNonExpired, accountNonLocked, getAuthorities(roles));
         return null;
     }
